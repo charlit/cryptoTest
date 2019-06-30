@@ -5,14 +5,34 @@
 <div class="container">
   <div class="row">
     <div class="col-sm">
-        <ul class="list-group">
-            <li class="list-group-item" *ngFor="let crypto of this.cryptos;  let i=index">
-                    {{crypto.name}}<span class="badge badge-info badge-pill float-right">{{crypto.value}}</span>
-          </li>
-        </ul>
-    </div>
-    <div class="col-sm">
-        <ul class="list-group">
+
+        <table class="table">
+            <thead>
+              <tr>
+                <th >Nom</th>
+                <th >Prix USD</th>
+                <th >Nombre</th>
+                <th >TT USD</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+            <div *ngFor="let d of data.data;  let i=index">
+                <div *ngFor="let crypto of this.cryptos;"> 
+                    <div *ngIf="d.id == crypto.name">
+                <td >{{d.id}}</td>
+                <td >{{d.priceUsd | number:'1.1-2'}}</td>
+                <td >{{crypto.value}}</td>
+                <td >{{crypto.value * d.priceUsd | number:'1.1-2' }}</td>
+
+          </div>
+        </div>
+      </div>
+    </tr>
+  </tbody>
+          </table>
+
+        <!-- <ul class="list-group">
             <li class="list-group-item">
                 <ng-container *ngFor="let d of data.data;  let i=index">
                     <div *ngFor="let crypto of this.cryptos;"> 
@@ -25,7 +45,7 @@
                       </div>
                   </ng-container>
           </li>
-        </ul>
+        </ul> -->
     </div>
 
   </div>

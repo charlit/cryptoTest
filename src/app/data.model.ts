@@ -1,8 +1,9 @@
-import { Detail} from './detail.model'
+import { Detail} from './detail.model';
+
 export class Data {
 
     constructor(
-        public data : Detail[]
+        public data: Detail[]
 
-    ){}
- }
+    ) {}
+}

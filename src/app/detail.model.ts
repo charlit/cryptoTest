@@ -1,8 +1,8 @@
 export class Detail {
 
     constructor(
-        public id : string,
-        public priceUsd : string
+        public id: string,
+        public priceUsd: string
 
-    ){}
- }
+    ) {}
+}
