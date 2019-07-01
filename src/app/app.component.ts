@@ -9,9 +9,18 @@ import { Data} from './data.model';
 })
 export class AppComponent implements OnInit {
   title = 'cryptoTest';
+  tt: any = 0;
   public data: Data;
-  cryptos = [{'name': 'bitcoin', 'value': 4},
-                    {'name': 'ethereum', 'value': 4}];
+  cryptos = [{'name': 'bitcoin', 'value': 0.21},
+             {'name': 'ethereum', 'value': 4.49},
+             {'name': 'litecoin', 'value': 13.2},
+             {'name': 'ripple', 'value': 5000},
+             {'name': 'eos', 'value': 204},
+             {'name': 'cardano', 'value': 602},
+             {'name': 'tron', 'value': 9712},
+             {'name': 'stellar', 'value': 2453},
+             {'name': 'nem', 'value': 269},
+             {'name': 'dogecoin', 'value': 300000}];
 
   constructor(private cryptoService: CryptoService) {}
 
