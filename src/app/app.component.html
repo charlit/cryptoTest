@@ -6,7 +6,7 @@
   <div class="row">
     <div class="col-sm">
 
-        <table class="table">
+        <table class="table">        
             <thead>
               <tr>
                 <th >Nom</th>
@@ -16,15 +16,14 @@
               </tr>
             </thead>
             <tbody>
-                <tr>
-            <div *ngFor="let d of data.data;  let i=index">
-                <div *ngFor="let crypto of this.cryptos;"> 
-                    <div *ngIf="d.id == crypto.name">
-                <td >{{d.id}}</td>
-                <td >{{d.priceUsd | number:'1.1-2'}}</td>
-                <td  >{{crypto.value}}</td>
-                <td >{{crypto.value * d.priceUsd | number:'1.1-2' }}</td>
-          </div >
+                <tr *ngFor="let item of data.data; let index=index; ">
+                <div *ngFor="let crypto of this.cryptos; "> 
+                    <div *ngIf="item.id == crypto.name">
+                <td >{{item.id}}</td>
+                <td >{{item.priceUsd | number:'1.1-2'}}</td>
+                <td >{{crypto.nombre}}</td>
+                <!-- <td >{{crypto.nombre * item.priceUsd | number:'1.1-2' }}</td> -->
+                <td >{{crypto.value}}</td>
         </div>
       </div>
     </tr>

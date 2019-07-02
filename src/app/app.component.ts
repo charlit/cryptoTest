@@ -11,30 +11,38 @@ export class AppComponent implements OnInit {
   title = 'cryptoTest';
   tt: any = 0;
   public data: Data;
-  cryptos = [{'name': 'bitcoin', 'value': 0.21},
-             {'name': 'ethereum', 'value': 4.49},
-             {'name': 'litecoin', 'value': 13.2},
-             {'name': 'ripple', 'value': 5000},
-             {'name': 'eos', 'value': 204},
-             {'name': 'cardano', 'value': 602},
-             {'name': 'tron', 'value': 9712},
-             {'name': 'stellar', 'value': 2453},
-             {'name': 'nem', 'value': 269},
-             {'name': 'dogecoin', 'value': 300000}];
+  cryptos = [{'name': 'bitcoin', 'nombre': 0.21,'value':0,},
+             {'name': 'ethereum', 'nombre': 4.49,'value':0},
+             {'name': 'litecoin', 'nombre': 13.2,'value':0},
+             {'name': 'ripple', 'nombre': 5000,'value':0},
+             {'name': 'eos', 'nombre': 204,'value':0},
+             {'name': 'cardano', 'nombre': 602,'value':0},
+             {'name': 'tron', 'nombre': 9712,'value':0},
+             {'name': 'stellar', 'nombre': 2453,'value':0},
+             {'name': 'nem', 'nombre': 269,'value':0},
+             {'name': 'dogecoin', 'nombre': 300000,'value':0}];
 
   constructor(private cryptoService: CryptoService) {}
 
   ngOnInit() {
-    for (let i = 0; i < this.cryptos.length; i++) {
-      console.log(this.cryptos[i].name + ' ' + this.cryptos[i].value);
-  }
+  //   for (let i = 0; i < this.cryptos.length; i++) {
+  //     console.log(this.cryptos[i].name + ' ' + this.cryptos[i].value);
+  // }
     this.cryptoService.getCryptos().subscribe(data => {
       this.data = data;
-      console.log(this.data.data);
+      // console.log(this.data.data);
 
-      for (let i = 0; i < 5; i++) {
-      console.log(this.data.data[i].id);
-      console.log(this.data.data[i].priceUsd);
+      for (let i = 0; i < 10; i++) {
+        if(this.data.data[i].id == this.cryptos[i].name){
+          console.log('t '+this.data.data[i].id);
+          console.log("ttt "+this.cryptos[i].name);
+          console.log("priceUSD "+this.data.data[i].priceUsd);
+          
+            this.data.data[i].priceUsd = this.cryptos[i].value;
+            console.log("value "+this.cryptos[i].value);
+        }
+      // console.log(this.data.data[i].id);
+      // console.log(this.data.data[i].priceUsd);
       }
     });
   }
