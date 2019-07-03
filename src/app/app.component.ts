@@ -9,7 +9,9 @@ import { Data} from './data.model';
 })
 export class AppComponent implements OnInit {
   title = 'cryptoTest';
+  public tableau = new Map<string, number>();
   tt: any = 0;
+
   public data: Data;
   cryptos = [{'name': 'bitcoin', 'nombre': 0.21,'value':0,},
              {'name': 'ethereum', 'nombre': 4.49,'value':0},
@@ -32,14 +34,29 @@ export class AppComponent implements OnInit {
       this.data = data;
       // console.log(this.data.data);
 
+
       for (let i = 0; i < 10; i++) {
         if(this.data.data[i].id == this.cryptos[i].name){
-          console.log('t '+this.data.data[i].id);
           console.log("ttt "+this.cryptos[i].name);
-          console.log("priceUSD "+this.data.data[i].priceUsd);
+          if(!this.tableau.has(this.cryptos[i].name)) {
+            this.tableau.set(this.cryptos[i].name,this.data.data[i].priceUsd);
+            let keys = Array.from(this.tableau.keys());
+            let values = Array.from(this.tableau.values());
+            console.log('keys '+keys);
+            console.log('values '+values);
+          }
+
+
+          console.log('bitcoin '+this.tableau.has("bitcoin"));
+          // console.log('t '+this.data.data[i].id);
+
+           console.log("priceUSD "+this.data.data[i].priceUsd);
           
             this.data.data[i].priceUsd = this.cryptos[i].value;
             console.log("value "+this.cryptos[i].value);
+        }
+        for (var [key, value] of this.tableau) {
+          console.log(key + ' == ' + value);
         }
       // console.log(this.data.data[i].id);
       // console.log(this.data.data[i].priceUsd);
